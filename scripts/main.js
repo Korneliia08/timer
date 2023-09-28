@@ -41,7 +41,7 @@ class Timer {
         clearInterval(this.setIntervalFunc);
         this.setIntervalFunc = setInterval(() => {
             this.currentTime = this.currentTime + 1;
-            this.elementPForTime.textContent = this.currentTime;
+            this.elementPForTime.textContent = this.generateTextFromTime(this.currentTime);
         }, 1000);
     }
 
@@ -61,7 +61,7 @@ class Timer {
         this.divForRoundsParent.style.display = "flex";
         this.divForRounds.style.display = "flex";
         this.round = document.createElement("p");
-        this.round.innerHTML = `${this.counterOfRounds} round: ${this.currentTime}`;
+        this.round.innerHTML = `${this.counterOfRounds} round: ${this.generateTextFromTime(this.currentTime)}`;
         this.round.classList.add("roundStyle");
         this.divForRounds.append(this.round);
     }
@@ -85,6 +85,16 @@ class Timer {
         this.counterOfRounds--;
     }
 
+    generateTextFromTime(time) {
+        let godzina = (time - time % 3600) / 3600
+        let minuta = ((time - time % 60) / 60) - (godzina * 60)
+        let sekunda = time - ((godzina * 3600) + (minuta * 60))
+        if (godzina < 10) godzina = '0' + godzina
+        if (minuta < 10) minuta = '0' + minuta
+        if (sekunda < 10) sekunda = '0' + sekunda
+
+        return `${godzina}:${minuta}:${sekunda}`
+    }
 }
 
 let timer = new Timer(".time", ".btnStart", ".btnRound", ".btnStop", ".btnClear", ".fieldForRound", ".btnClearRounds", ".btnClearLastRound");
