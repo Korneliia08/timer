@@ -87,14 +87,14 @@ class Timer {
     }
 
     generateTextFromTime(time) {
-        let godzina = (time - time % 3600) / 3600
-        let minuta = ((time - time % 60) / 60) - (godzina * 60)
-        let sekunda = time - ((godzina * 3600) + (minuta * 60))
-        if (godzina < 10) godzina = '0' + godzina
-        if (minuta < 10) minuta = '0' + minuta
-        if (sekunda < 10) sekunda = '0' + sekunda
+        let hour = (time - time % 3600) / 3600
+        let minute = ((time - time % 60) / 60) - (hour * 60)
+        let sekund = time - ((hour * 3600) + (minute * 60))
+        if (hour < 10) hour = '0' + hour
+        if (minute < 10) minute = '0' + minute
+        if (sekund < 10) sekund = '0' + sekund
 
-        return `${godzina}:${minuta}:${sekunda}`
+        return `${hour}:${minute}:${sekund}`
     }
 }
 
