@@ -52,6 +52,7 @@ class Timer {
 
     clearTime() {
         clearInterval(this.setIntervalFunc);
+        this.currentTime = 0;
         this.elementPForTime.textContent = "00:00:00";
     }
 
