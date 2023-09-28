@@ -8,12 +8,13 @@ h6, h5, h4, h3, h2, h1, p {
 
 .wrapper {
     background-color: #124287;
-    height: 100vh;
+    height: 100%;
+    min-height: 100vh;
     box-shadow: 2px 2px 150px 8px inset rgba(79, 81, 82, 0.6);
 }
 
 .wrapper main {
-    height: calc(100% - 20px);
+    min-height: calc(100vh - 20px);
     width: 100vw;
     display: flex;
     justify-content: center;
